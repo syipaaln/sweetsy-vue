@@ -8,12 +8,7 @@
                     <div class="text-xl text-semi-bold text-red-300 uppercase">Sweetsy Bakery</div>
                 </a>
                 <div class="gap-7 items-center justify-center text-sm lg:flex hidden">
-                    <a href="#" class="text-lg text-red-300 hover:opacity-50">Cakes</a>
-                    <a href="#" class="text-lg text-red-300 hover:opacity-50">Cupcakes</a>
-                    <a href="#" class="text-lg text-red-300 hover:opacity-50">Cookies</a>
-                    <a href="#" class="text-lg text-red-300 hover:opacity-50">Brownies</a>
-                    <a href="#" class="text-lg text-red-300 hover:opacity-50">Breads</a>
-                    <a href="#" class="text-lg text-red-300 hover:opacity-50">Drinks</a>
+                    <a v-for="category in categories" href="#" class="text-lg text-red-300 hover:opacity-50">{{ category.name }}</a>
                 </div>
                 <div class="flex gap-10">
                     <a href="#" class="hover:opacity-50">
@@ -55,682 +50,22 @@
             <div class="text-2xl mb-10">Kategori Produk</div>
             <div class="w-[362px] md:w-full overflow-x-auto">
                 <div class="flex min-w-max">
-                    <a href="#" class="text-lg bg-red-200 lg:p-10 p-8 flex lg:w-full w-32 justify-center items-center hover:opacity-50">Cakes</a>
-                    <a href="#" class="text-lg bg-red-100 lg:p-10 p-8 flex lg:w-full w-32 justify-center items-center hover:opacity-50">Cupcakes</a>
-                    <a href="#" class="text-lg bg-red-200 lg:p-10 p-8 flex lg:w-full w-32 justify-center items-center hover:opacity-50">Cookies</a>
-                    <a href="#" class="text-lg bg-red-100 lg:p-10 p-8 flex lg:w-full w-32 justify-center items-center hover:opacity-50">Brownies</a>
-                    <a href="#" class="text-lg bg-red-200 lg:p-10 p-8 flex lg:w-full w-32 justify-center items-center hover:opacity-50">Breads</a>
-                    <a href="#" class="text-lg bg-red-100 lg:p-10 p-8 flex lg:w-full w-32 justify-center items-center hover:opacity-50">Drinks</a>
+                    <a v-for="(category, index) in categories" :key="index"  href="#" :class="getBackgroundClass(index)" class="text-lg bg-red-200 lg:p-10 p-8 flex lg:w-full w-32 justify-center items-center hover:opacity-50">{{ category.name }}</a>
                 </div>
             </div>
         </section>
-        <section class="mx-24 lg:mx-6 py-8 lg:px-20">
-            <div class="text-2xl mb-10">Cakes</div>
+        <section v-for="(category, catIndex) in categories" :key="catIndex" class="mx-24 lg:mx-6 py-8 lg:px-20">
+            <div class="text-2xl mb-10">{{ category.name }}</div>
             <div class="grid grid-cols-2 lg:grid-cols-5 gap-4 justify-between pb-11">
-                <div class="cursor-pointer max-w-xs mx-auto">
-                    <img src="../assets/cakes/cake1.jpg" alt="cake 1" class="w-full h-auto object-cover">
+                <div v-for="(product, prodIndex) in category.products" :key="prodIndex" class="cursor-pointer max-w-xs mx-auto" :class="{'hidden lg:block': prodIndex === 4}">
+                    <img :src="product.image" :alt="product.name" class="w-full h-auto object-cover">
                     <div class="bg-red-100 w-full p-4">
-                        <div class="mb-1">
-                            Birthday Cake
-                        </div>
+                        <div class="mb-1">{{ product.name }}</div>
                         <div class="flex items-center mb-1 space-x-1">
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
+                            <i v-for="i in 5" :key="i" class="bi bi-star-fill text-yellow-400"></i>
                         </div>
                         <div class="flex items-center justify-between">
-                            Rp 50.000
-                            <div class="bg-red-300 w-8 h-8 flex items-center justify-center rounded-full cursor-pointer hover:opacity-50">
-                                <i class="bi bi-cart-plus text-lg text-white"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="cursor-pointer max-w-xs mx-auto">
-                    <img src="../assets/cakes/cake2.jpg" alt="cake 2" class="w-full h-auto object-cover">
-                    <div class="bg-red-100 w-full p-4">
-                        <div class="mb-1">
-                            Birthday Cake
-                        </div>
-                        <div class="flex items-center mb-1 space-x-1">
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            Rp 50.000
-                            <div class="bg-red-300 w-8 h-8 flex items-center justify-center rounded-full cursor-pointer hover:opacity-50">
-                                <i class="bi bi-cart-plus text-lg text-white"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="cursor-pointer max-w-xs mx-auto">
-                    <img src="../assets/cakes/cake3.jpg" alt="cake 3" class="w-full h-auto object-cover">
-                    <div class="bg-red-100 w-full p-4">
-                        <div class="mb-1">
-                            Birthday Cake
-                        </div>
-                        <div class="flex items-center mb-1 space-x-1">
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            Rp 50.000
-                            <div class="bg-red-300 w-8 h-8 flex items-center justify-center rounded-full cursor-pointer hover:opacity-50">
-                                <i class="bi bi-cart-plus text-lg text-white"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="cursor-pointer max-w-xs mx-auto">
-                    <img src="../assets/cakes/cake4.jpg" alt="cake 4" class="w-full h-auto object-cover">
-                    <div class="bg-red-100 w-full p-4">
-                        <div class="mb-1">
-                            Birthday Cake
-                        </div>
-                        <div class="flex items-center mb-1 space-x-1">
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            Rp 50.000
-                            <div class="bg-red-300 w-8 h-8 flex items-center justify-center rounded-full cursor-pointer hover:opacity-50">
-                                <i class="bi bi-cart-plus text-lg text-white"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="cursor-pointer max-w-xs mx-auto hidden lg:block">
-                    <img src="../assets/cakes/cake5.jpg" alt="cake 5" class="w-full h-auto object-cover">
-                    <div class="bg-red-100 w-full p-4">
-                        <div class="mb-1">
-                            Birthday Cake
-                        </div>
-                        <div class="flex items-center mb-1 space-x-1">
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            Rp 50.000
-                            <div class="bg-red-300 w-8 h-8 flex items-center justify-center rounded-full cursor-pointer hover:opacity-50">
-                                <i class="bi bi-cart-plus text-lg text-white"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center hover:opacity-50">
-                <a href="#">Lihat Semuanya</a>
-            </div>
-        </section>
-        <section class="mx-24 lg:mx-6 py-8 lg:px-20">
-            <div class="text-2xl mb-10">Cupcakes</div>
-            <div class="grid grid-cols-2 lg:grid-cols-5 gap-4 justify-between pb-11">
-                <div class="cursor-pointer max-w-xs mx-auto">
-                    <img src="../assets/cupcakes/cupcake1.jpg" alt="Cupcake 1" class="w-full h-auto object-cover">
-                    <div class="bg-red-100 w-full p-4">
-                        <div class="mb-1">
-                            Cupcakes
-                        </div>
-                        <div class="flex items-center mb-1 space-x-1">
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            Rp 50.000
-                            <div class="bg-red-300 w-8 h-8 flex items-center justify-center rounded-full cursor-pointer hover:opacity-50">
-                                <i class="bi bi-cart-plus text-lg text-white"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="cursor-pointer max-w-xs mx-auto">
-                    <img src="../assets/cupcakes/cupcake2.jpg" alt="Cupcake 2" class="w-full h-auto object-cover">
-                    <div class="bg-red-100 w-full p-4">
-                        <div class="mb-1">
-                            Cupcakes
-                        </div>
-                        <div class="flex items-center mb-1 space-x-1">
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            Rp 50.000
-                            <div class="bg-red-300 w-8 h-8 flex items-center justify-center rounded-full cursor-pointer hover:opacity-50">
-                                <i class="bi bi-cart-plus text-lg text-white"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="cursor-pointer max-w-xs mx-auto">
-                    <img src="../assets/cupcakes/cupcake3.jpg" alt="Cupcake 3" class="w-full h-auto object-cover">
-                    <div class="bg-red-100 w-full p-4">
-                        <div class="mb-1">
-                            Cupcakes
-                        </div>
-                        <div class="flex items-center mb-1 space-x-1">
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            Rp 50.000
-                            <div class="bg-red-300 w-8 h-8 flex items-center justify-center rounded-full cursor-pointer hover:opacity-50">
-                                <i class="bi bi-cart-plus text-lg text-white"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="cursor-pointer max-w-xs mx-auto">
-                    <img src="../assets/cupcakes/cupcake4.jpg" alt="Cupcake 4" class="w-full h-auto object-cover">
-                    <div class="bg-red-100 w-full p-4">
-                        <div class="mb-1">
-                            Cupcakes
-                        </div>
-                        <div class="flex items-center mb-1 space-x-1">
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            Rp 50.000
-                            <div class="bg-red-300 w-8 h-8 flex items-center justify-center rounded-full cursor-pointer hover:opacity-50">
-                                <i class="bi bi-cart-plus text-lg text-white"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="cursor-pointer max-w-xs mx-auto hidden lg:block">
-                    <img src="../assets/cupcakes/cupcake5.jpg" alt="Cupcake 5" class="w-full h-auto object-cover">
-                    <div class="bg-red-100 w-full p-4">
-                        <div class="mb-1">
-                            Cupcakes
-                        </div>
-                        <div class="flex items-center mb-1 space-x-1">
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            Rp 50.000
-                            <div class="bg-red-300 w-8 h-8 flex items-center justify-center rounded-full cursor-pointer hover:opacity-50">
-                                <i class="bi bi-cart-plus text-lg text-white"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center hover:opacity-50">
-                <a href="#">Lihat Semuanya</a>
-            </div>
-        </section>
-        <section class="mx-24 lg:mx-6 py-8 lg:px-20">
-            <div class="text-2xl mb-10">Cookies</div>
-            <div class="grid grid-cols-2 lg:grid-cols-5 gap-4 justify-between pb-11">
-                <div class="cursor-pointer max-w-xs mx-auto">
-                    <img src="../assets/cookies/cookie1.jpg" alt="Cookie 1" class="w-full h-auto object-cover">
-                    <div class="bg-red-100 w-full p-4">
-                        <div class="mb-1">
-                            Cookies
-                        </div>
-                        <div class="flex items-center mb-1 space-x-1">
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            Rp 30.000
-                            <div class="bg-red-300 w-8 h-8 flex items-center justify-center rounded-full cursor-pointer hover:opacity-50">
-                                <i class="bi bi-cart-plus text-lg text-white"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="cursor-pointer max-w-xs mx-auto">
-                    <img src="../assets/cookies/cookie2.jpg" alt="Cookie 2" class="w-full h-auto object-cover">
-                    <div class="bg-red-100 w-full p-4">
-                        <div class="mb-1">
-                            Cookies
-                        </div>
-                        <div class="flex items-center mb-1 space-x-1">
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            Rp 30.000
-                            <div class="bg-red-300 w-8 h-8 flex items-center justify-center rounded-full cursor-pointer hover:opacity-50">
-                                <i class="bi bi-cart-plus text-lg text-white"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="cursor-pointer max-w-xs mx-auto">
-                    <img src="../assets/cookies/cookie3.jpg" alt="Cookie 3" class="w-full h-auto object-cover">
-                    <div class="bg-red-100 w-full p-4">
-                        <div class="mb-1">
-                            Cookies
-                        </div>
-                        <div class="flex items-center mb-1 space-x-1">
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            Rp 30.000
-                            <div class="bg-red-300 w-8 h-8 flex items-center justify-center rounded-full cursor-pointer hover:opacity-50">
-                                <i class="bi bi-cart-plus text-lg text-white"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="cursor-pointer max-w-xs mx-auto">
-                    <img src="../assets/cookies/cookie4.jpg" alt="Cookie 4" class="w-full h-auto object-cover">
-                    <div class="bg-red-100 w-full p-4">
-                        <div class="mb-1">
-                            Cookies
-                        </div>
-                        <div class="flex items-center mb-1 space-x-1">
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            Rp 30.000
-                            <div class="bg-red-300 w-8 h-8 flex items-center justify-center rounded-full cursor-pointer hover:opacity-50">
-                                <i class="bi bi-cart-plus text-lg text-white"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="cursor-pointer max-w-xs mx-auto hidden lg:block">
-                    <img src="../assets/cookies/cookie5.jpg" alt="Cookie 5" class="w-full h-auto object-cover">
-                    <div class="bg-red-100 w-full p-4">
-                        <div class="mb-1">
-                            Cookies
-                        </div>
-                        <div class="flex items-center mb-1 space-x-1">
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            Rp 30.000
-                            <div class="bg-red-300 w-8 h-8 flex items-center justify-center rounded-full cursor-pointer hover:opacity-50">
-                                <i class="bi bi-cart-plus text-lg text-white"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center hover:opacity-50">
-                <a href="#">Lihat Semuanya</a>
-            </div>
-        </section>
-        <section class="mx-24 lg:mx-6 py-8 lg:px-20">
-            <div class="text-2xl mb-10">Brownies</div>
-            <div class="grid grid-cols-2 lg:grid-cols-5 gap-4 justify-between pb-11">
-                <div class="cursor-pointer max-w-xs mx-auto">
-                    <img src="../assets/brownies/brownie1.jpg" alt="Brownie 1" class="w-full h-auto object-cover">
-                    <div class="bg-red-100 w-full p-4">
-                        <div class="mb-1">
-                            Brownies
-                        </div>
-                        <div class="flex items-center mb-1 space-x-1">
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            Rp 50.000
-                            <div class="bg-red-300 w-8 h-8 flex items-center justify-center rounded-full cursor-pointer hover:opacity-50">
-                                <i class="bi bi-cart-plus text-lg text-white"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="cursor-pointer max-w-xs mx-auto">
-                    <img src="../assets/brownies/brownie2.jpg" alt="Brownie 2" class="w-full h-auto object-cover">
-                    <div class="bg-red-100 w-full p-4">
-                        <div class="mb-1">
-                            Brownies
-                        </div>
-                        <div class="flex items-center mb-1 space-x-1">
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            Rp 50.000
-                            <div class="bg-red-300 w-8 h-8 flex items-center justify-center rounded-full cursor-pointer hover:opacity-50">
-                                <i class="bi bi-cart-plus text-lg text-white"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="cursor-pointer max-w-xs mx-auto">
-                    <img src="../assets/brownies/brownie3.jpg" alt="Brownie 3" class="w-full h-auto object-cover">
-                    <div class="bg-red-100 w-full p-4">
-                        <div class="mb-1">
-                            Brownies
-                        </div>
-                        <div class="flex items-center mb-1 space-x-1">
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            Rp 50.000
-                            <div class="bg-red-300 w-8 h-8 flex items-center justify-center rounded-full cursor-pointer hover:opacity-50">
-                                <i class="bi bi-cart-plus text-lg text-white"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="cursor-pointer max-w-xs mx-auto">
-                    <img src="../assets/brownies/brownie4.jpg" alt="Brownie 4" class="w-full h-auto object-cover">
-                    <div class="bg-red-100 w-full p-4">
-                        <div class="mb-1">
-                            Brownies
-                        </div>
-                        <div class="flex items-center mb-1 space-x-1">
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            Rp 50.000
-                            <div class="bg-red-300 w-8 h-8 flex items-center justify-center rounded-full cursor-pointer hover:opacity-50">
-                                <i class="bi bi-cart-plus text-lg text-white"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="cursor-pointer max-w-xs mx-auto hidden lg:block">
-                    <img src="../assets/brownies/brownie5.jpg" alt="Brownie 5" class="w-full h-auto object-cover">
-                    <div class="bg-red-100 w-full p-4">
-                        <div class="mb-1">
-                            Brownies
-                        </div>
-                        <div class="flex items-center mb-1 space-x-1">
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            Rp 50.000
-                            <div class="bg-red-300 w-8 h-8 flex items-center justify-center rounded-full cursor-pointer hover:opacity-50">
-                                <i class="bi bi-cart-plus text-lg text-white"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center hover:opacity-50">
-                <a href="#">Lihat Semuanya</a>
-            </div>
-        </section>
-        <section class="mx-24 lg:mx-6 py-8 lg:px-20">
-            <div class="text-2xl mb-10">Bread</div>
-            <div class="grid grid-cols-2 lg:grid-cols-5 gap-4 justify-between pb-11">
-                <div class="cursor-pointer max-w-xs mx-auto">
-                    <img src="../assets/bread/bread1.jpg" alt="Bread 1" class="w-full h-auto object-cover">
-                    <div class="bg-red-100 w-full p-4">
-                        <div class="mb-1">
-                            Bread
-                        </div>
-                        <div class="flex items-center mb-1 space-x-1">
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            Rp 50.000
-                            <div class="bg-red-300 w-8 h-8 flex items-center justify-center rounded-full cursor-pointer hover:opacity-50">
-                                <i class="bi bi-cart-plus text-lg text-white"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="cursor-pointer max-w-xs mx-auto">
-                    <img src="../assets/bread/bread2.jpg" alt="Bread 2" class="w-full h-auto object-cover">
-                    <div class="bg-red-100 w-full p-4">
-                        <div class="mb-1">
-                            Bread
-                        </div>
-                        <div class="flex items-center mb-1 space-x-1">
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            Rp 50.000
-                            <div class="bg-red-300 w-8 h-8 flex items-center justify-center rounded-full cursor-pointer hover:opacity-50">
-                                <i class="bi bi-cart-plus text-lg text-white"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="cursor-pointer max-w-xs mx-auto">
-                    <img src="../assets/bread/bread3.jpg" alt="Bread 3" class="w-full h-auto object-cover">
-                    <div class="bg-red-100 w-full p-4">
-                        <div class="mb-1">
-                            Bread
-                        </div>
-                        <div class="flex items-center mb-1 space-x-1">
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            Rp 50.000
-                            <div class="bg-red-300 w-8 h-8 flex items-center justify-center rounded-full cursor-pointer hover:opacity-50">
-                                <i class="bi bi-cart-plus text-lg text-white"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="cursor-pointer max-w-xs mx-auto">
-                    <img src="../assets/bread/bread4.jpg" alt="Bread 4" class="w-full h-auto object-cover">
-                    <div class="bg-red-100 w-full p-4">
-                        <div class="mb-1">
-                            Bread
-                        </div>
-                        <div class="flex items-center mb-1 space-x-1">
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            Rp 50.000
-                            <div class="bg-red-300 w-8 h-8 flex items-center justify-center rounded-full cursor-pointer hover:opacity-50">
-                                <i class="bi bi-cart-plus text-lg text-white"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="cursor-pointer max-w-xs mx-auto hidden lg:block">
-                    <img src="../assets/bread/bread5.jpg" alt="Bread 5" class="w-full h-auto object-cover">
-                    <div class="bg-red-100 w-full p-4">
-                        <div class="mb-1">
-                            Bread
-                        </div>
-                        <div class="flex items-center mb-1 space-x-1">
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            Rp 50.000
-                            <div class="bg-red-300 w-8 h-8 flex items-center justify-center rounded-full cursor-pointer hover:opacity-50">
-                                <i class="bi bi-cart-plus text-lg text-white"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center hover:opacity-50">
-                <a href="#">Lihat Semuanya</a>
-            </div>
-        </section>
-        <section class="mx-24 lg:mx-6 py-8 lg:px-20">
-            <div class="text-2xl mb-10">Drinks</div>
-            <div class="grid grid-cols-2 lg:grid-cols-5 gap-4 justify-between pb-11">
-                <div class="cursor-pointer max-w-xs mx-auto">
-                    <img src="../assets/drinks/drink1.jpg" alt="Drink 1" class="w-full h-auto object-cover">
-                    <div class="bg-red-100 w-full p-4">
-                        <div class="mb-1">
-                            Drinks
-                        </div>
-                        <div class="flex items-center mb-1 space-x-1">
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            Rp 20.000
-                            <div class="bg-red-300 w-8 h-8 flex items-center justify-center rounded-full cursor-pointer hover:opacity-50">
-                                <i class="bi bi-cart-plus text-lg text-white"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="cursor-pointer max-w-xs mx-auto">
-                    <img src="../assets/drinks/drink2.jpg" alt="Drink 2" class="w-full h-auto object-cover">
-                    <div class="bg-red-100 w-full p-4">
-                        <div class="mb-1">
-                            Drinks
-                        </div>
-                        <div class="flex items-center mb-1 space-x-1">
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            Rp 20.000
-                            <div class="bg-red-300 w-8 h-8 flex items-center justify-center rounded-full cursor-pointer hover:opacity-50">
-                                <i class="bi bi-cart-plus text-lg text-white"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="cursor-pointer max-w-xs mx-auto">
-                    <img src="../assets/drinks/drink3.jpg" alt="Drink 3" class="w-full h-auto object-cover">
-                    <div class="bg-red-100 w-full p-4">
-                        <div class="mb-1">
-                            Drinks
-                        </div>
-                        <div class="flex items-center mb-1 space-x-1">
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            Rp 20.000
-                            <div class="bg-red-300 w-8 h-8 flex items-center justify-center rounded-full cursor-pointer hover:opacity-50">
-                                <i class="bi bi-cart-plus text-lg text-white"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="cursor-pointer max-w-xs mx-auto">
-                    <img src="../assets/drinks/drink4.jpg" alt="Drink 4" class="w-full h-auto object-cover">
-                    <div class="bg-red-100 w-full p-4">
-                        <div class="mb-1">
-                            Drinks
-                        </div>
-                        <div class="flex items-center mb-1 space-x-1">
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            Rp 20.000
-                            <div class="bg-red-300 w-8 h-8 flex items-center justify-center rounded-full cursor-pointer hover:opacity-50">
-                                <i class="bi bi-cart-plus text-lg text-white"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="cursor-pointer max-w-xs mx-auto hidden lg:block">
-                    <img src="../assets/drinks/drink5.jpg" alt="Drink 5" class="w-full h-auto object-cover">
-                    <div class="bg-red-100 w-full p-4">
-                        <div class="mb-1">
-                            Drinks
-                        </div>
-                        <div class="flex items-center mb-1 space-x-1">
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                            <i class="bi bi-star-fill text-yellow-400"></i>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            Rp 20.000
+                            {{ product.price }}
                             <div class="bg-red-300 w-8 h-8 flex items-center justify-center rounded-full cursor-pointer hover:opacity-50">
                                 <i class="bi bi-cart-plus text-lg text-white"></i>
                             </div>
@@ -836,12 +171,7 @@
                     </div>
                     <div>
                         <p class="text-xl text-semibold mb-5">Kategori Produk</p>
-                        <p class="text-lg">Cakes</p>
-                        <p class="text-lg">Cupcakes</p>
-                        <p class="text-lg">Cookies</p>
-                        <p class="text-lg">Brownies</p>
-                        <p class="text-lg">Bread</p>
-                        <p class="text-lg">Drinks</p>
+                        <p v-for="category in categories"  class="text-lg">{{ category.name }}</p>
                     </div>
                     <div>
                         <p class="text-xl text-semibold mb-5">Kontak Kami</p>
@@ -854,3 +184,110 @@
         </footer>
     </div>
 </template>
+
+<script setup>
+    import { ref, reactive } from 'vue';
+    
+    import cake1 from '../assets/cakes/cake1.jpg';
+    import cake2 from '../assets/cakes/cake2.jpg';
+    import cake3 from '../assets/cakes/cake3.jpg';
+    import cake4 from '../assets/cakes/cake4.jpg';
+    import cake5 from '../assets/cakes/cake5.jpg';
+
+    import cupcake1 from '../assets/cupcakes/cupcake1.jpg';
+    import cupcake2 from '../assets/cupcakes/cupcake2.jpg';
+    import cupcake3 from '../assets/cupcakes/cupcake3.jpg';
+    import cupcake4 from '../assets/cupcakes/cupcake4.jpg';
+    import cupcake5 from '../assets/cupcakes/cupcake5.jpg';
+
+    import cookie1 from '../assets/cookies/cookie1.jpg';
+    import cookie2 from '../assets/cookies/cookie2.jpg';
+    import cookie3 from '../assets/cookies/cookie3.jpg';
+    import cookie4 from '../assets/cookies/cookie4.jpg';
+    import cookie5 from '../assets/cookies/cookie5.jpg';
+
+    import brownie1 from '../assets/brownies/brownie1.jpg';
+    import brownie2 from '../assets/brownies/brownie2.jpg';
+    import brownie3 from '../assets/brownies/brownie3.jpg';
+    import brownie4 from '../assets/brownies/brownie4.jpg';
+    import brownie5 from '../assets/brownies/brownie5.jpg';
+
+    import bread1 from '../assets/breads/bread1.jpg';
+    import bread2 from '../assets/breads/bread2.jpg';
+    import bread3 from '../assets/breads/bread3.jpg';
+    import bread4 from '../assets/breads/bread4.jpg';
+    import bread5 from '../assets/breads/bread5.jpg';
+
+    import drink1 from '../assets/drinks/drink1.jpg';
+    import drink2 from '../assets/drinks/drink2.jpg';
+    import drink3 from '../assets/drinks/drink3.jpg';
+    import drink4 from '../assets/drinks/drink4.jpg';
+    import drink5 from '../assets/drinks/drink5.jpg';
+
+    const categories = reactive([
+        {
+            name: 'Cakes',
+            products: [
+                { name: 'Birthday Cake', price: 'Rp 50.000', image: cake1 },
+                { name: 'Birthday Cake', price: 'Rp 50.000', image: cake2 },
+                { name: 'Birthday Cake', price: 'Rp 50.000', image: cake3 },
+                { name: 'Birthday Cake', price: 'Rp 50.000', image: cake4 },
+                { name: 'Birthday Cake', price: 'Rp 50.000', image: cake5 }
+            ]
+        },
+        {
+            name: 'Cupcakes',
+            products: [
+                { name: 'Cupcake', price: 'Rp 50.000', image: cupcake1 },
+                { name: 'Cupcake', price: 'Rp 50.000', image: cupcake2 },
+                { name: 'Cupcake', price: 'Rp 50.000', image: cupcake3 },
+                { name: 'Cupcake', price: 'Rp 50.000', image: cupcake4 },
+                { name: 'Cupcake', price: 'Rp 50.000', image: cupcake5 }
+            ]
+        },
+        {
+            name: 'Cookies',
+            products: [
+                { name: 'Cookies', price: 'Rp 30.000', image: cookie1 },
+                { name: 'Cookies', price: 'Rp 30.000', image: cookie2 },
+                { name: 'Cookies', price: 'Rp 30.000', image: cookie3 },
+                { name: 'Cookies', price: 'Rp 30.000', image: cookie4 },
+                { name: 'Cookies', price: 'Rp 30.000', image: cookie5 }
+            ]
+        },
+        {
+            name: 'Brownies',
+            products: [
+                { name: 'Brownies', price: 'Rp 50.000', image: brownie1 },
+                { name: 'Brownies', price: 'Rp 50.000', image: brownie2 },
+                { name: 'Brownies', price: 'Rp 50.000', image: brownie3 },
+                { name: 'Brownies', price: 'Rp 50.000', image: brownie4 },
+                { name: 'Brownies', price: 'Rp 50.000', image: brownie5 }
+            ]
+        },
+        {
+            name: 'Breads',
+            products: [
+                { name: 'Bread', price: 'Rp 50.000', image: bread1 },
+                { name: 'Bread', price: 'Rp 50.000', image: bread2 },
+                { name: 'Bread', price: 'Rp 50.000', image: bread3 },
+                { name: 'Bread', price: 'Rp 50.000', image: bread4 },
+                { name: 'Bread', price: 'Rp 50.000', image: bread5 }
+            ]
+        },
+        {
+            name: 'Drinks',
+            products: [
+                { name: 'Drink', price: 'Rp 20.000', image: drink1 },
+                { name: 'Drink', price: 'Rp 20.000', image: drink2 },
+                { name: 'Drink', price: 'Rp 20.000', image: drink3 },
+                { name: 'Drink', price: 'Rp 20.000', image: drink4 },
+                { name: 'Drink', price: 'Rp 20.000', image: drink5 }
+            ]
+        }
+    ]);
+
+    function getBackgroundClass(index) {
+        return index % 2 === 0 ? 'bg-red-300' : 'bg-red-200';
+    }
+</script>
