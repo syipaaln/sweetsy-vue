@@ -1,7 +1,7 @@
 <template>
-    <div>
-        <p>{{ message }}</p>
-        <input type="color" v-model="color" @input="changeColor">
+    <div class="p-4 border rounded shadow-md">
+        <p class="text-lg font-medium mb-4">{{ message }}</p>
+        <input type="color" v-model="color" @input="changeColor" class="rounded">
     </div>
 </template>
 
