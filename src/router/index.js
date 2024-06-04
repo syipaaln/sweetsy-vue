@@ -14,6 +14,11 @@ const router = createRouter({
       path: '/color',
       name: 'color',
       component: ParentComponent
+    },
+    {
+      path: '/pokemon',
+      name: 'pokemon',
+      component: () => import('../views/PokemonView.vue')
     }
   ]
 })
